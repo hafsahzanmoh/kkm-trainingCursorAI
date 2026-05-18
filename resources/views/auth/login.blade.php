@@ -2,119 +2,121 @@
 
 @section('content')
 <style>
-    #app > nav {
-        display: none;
+    .neo-login-wrap {
+        min-height: calc(100vh - 130px);
+        padding: 2rem 1rem;
     }
 
-    #app main.py-4 {
-        padding: 0 !important;
+    .neo-login-shell {
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(140deg, #033a4d 0%, #065f7f 45%, #0b89ab 100%);
+        box-shadow: 0 24px 60px rgba(0, 23, 34, 0.35);
+        position: relative;
     }
 
-    .login-page {
-        min-height: 100vh;
-        background: radial-gradient(circle at 10% 20%, #19c7c4 0%, #0d6f9d 45%, #073b65 100%);
-        color: #e9fbff;
+    .neo-login-shell::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 78% 22%, rgba(138, 250, 255, 0.2), transparent 34%);
+        pointer-events: none;
     }
 
-    .login-navbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        backdrop-filter: blur(8px);
-        background: rgba(1, 34, 61, 0.45);
-        border-bottom: 1px solid rgba(173, 255, 255, 0.28);
+    .matrix-panel {
+        position: relative;
+        min-height: 100%;
+        padding: 2.5rem 2rem;
+        color: #baf7ff;
+        background: linear-gradient(180deg, rgba(2, 27, 40, 0.8), rgba(0, 57, 78, 0.72));
+        isolation: isolate;
     }
 
-    .brand-mark {
-        width: 38px;
-        height: 38px;
-        border-radius: 12px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #63fff2, #1eb4d9);
-        color: #06334f;
-        font-weight: 700;
+    .matrix-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(to bottom, rgba(80, 249, 255, 0.2) 1px, transparent 1px),
+            linear-gradient(to right, rgba(80, 249, 255, 0.14) 1px, transparent 1px);
+        background-size: 100% 26px, 26px 100%;
+        opacity: 0.4;
+        z-index: -1;
     }
 
-    .login-shell {
-        padding: 3rem 1rem;
+    .matrix-rain {
+        font-size: 0.78rem;
+        line-height: 1.45;
+        letter-spacing: 0.16rem;
+        margin-top: 1.5rem;
+        color: rgba(128, 255, 245, 0.92);
+        text-shadow: 0 0 10px rgba(80, 249, 255, 0.55);
+        word-break: break-all;
     }
 
-    .hero-copy h1 {
-        font-size: clamp(2rem, 4vw, 3.1rem);
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .hero-copy p {
-        font-size: 1rem;
-        max-width: 560px;
-        color: #d4f7ff;
-    }
-
-    .feature-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: .45rem;
-        padding: .45rem .8rem;
-        margin: .2rem .3rem .2rem 0;
+    .hello-chip {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.4rem 0.9rem;
         border-radius: 999px;
-        font-size: .86rem;
-        background: rgba(180, 255, 255, 0.18);
-        border: 1px solid rgba(227, 255, 255, 0.36);
-        color: #e8ffff;
-    }
-
-    .login-card {
-        border-radius: 20px;
-        border: 1px solid rgba(222, 255, 255, 0.35);
-        background: rgba(2, 33, 58, 0.6);
-        box-shadow: 0 12px 30px rgba(1, 18, 34, 0.28);
-        backdrop-filter: blur(8px);
-    }
-
-    .login-card .form-label {
-        color: #bff8ff;
-        font-weight: 600;
-    }
-
-    .login-card .form-control {
-        border-radius: 12px;
-        border: 1px solid rgba(142, 235, 255, 0.45);
-        background: rgba(5, 59, 88, 0.58);
-        color: #f2feff;
-        padding: .72rem .85rem;
-    }
-
-    .login-card .form-control::placeholder {
-        color: #b8ecf7;
-    }
-
-    .login-card .form-control:focus {
-        border-color: #64fff4;
-        box-shadow: 0 0 0 .2rem rgba(100, 255, 244, 0.2);
-        background: rgba(5, 59, 88, 0.76);
-        color: #fff;
-    }
-
-    .login-btn {
-        border: none;
-        border-radius: 12px;
-        padding: .75rem 1rem;
         font-weight: 700;
-        color: #063349;
-        background: linear-gradient(90deg, #89fff7, #58d2ff);
-        transition: transform .2s ease, box-shadow .2s ease;
+        font-size: 0.8rem;
+        color: #0a4254;
+        background: #8af7ff;
     }
 
-    .login-btn:hover {
+    .login-panel {
+        padding: 2.5rem 2rem;
+        background: rgba(255, 255, 255, 0.98);
+        position: relative;
+        z-index: 1;
+    }
+
+    .cute-title {
+        color: #07445a;
+        font-weight: 800;
+        margin-bottom: 0.35rem;
+    }
+
+    .cute-subtitle {
+        color: #4c7180;
+        margin-bottom: 1.5rem;
+        font-size: 0.96rem;
+    }
+
+    .neo-login-shell .form-label {
+        color: #145065;
+        font-weight: 700;
+    }
+
+    .neo-login-shell .form-control {
+        border-radius: 14px;
+        border: 1px solid #b2ddeb;
+        padding: 0.75rem 0.95rem;
+    }
+
+    .neo-login-shell .form-control:focus {
+        border-color: #2ac4de;
+        box-shadow: 0 0 0 0.2rem rgba(42, 196, 222, 0.2);
+    }
+
+    .btn-neo {
+        border: none;
+        border-radius: 14px;
+        padding: 0.7rem 1.2rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #0a95b4, #00bfd6);
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(10, 149, 180, 0.28);
+    }
+
+    .btn-neo:hover {
+        color: #fff;
         transform: translateY(-1px);
-        box-shadow: 0 8px 18px rgba(66, 218, 255, 0.35);
-        color: #03222f;
     }
 
     .forgot-link {
-        color: #c4f8ff;
+        color: #0c7997;
         text-decoration: none;
         font-weight: 600;
     }
@@ -123,104 +125,83 @@
         text-decoration: underline;
     }
 
-    .form-check-input:checked {
-        background-color: #64fff4;
-        border-color: #64fff4;
-    }
-
-    .form-check-label {
-        color: #d8fbff;
-    }
-
-    .invalid-feedback {
-        color: #ffd2d2;
-    }
-
-    @media (max-width: 991.98px) {
-        .login-shell {
-            padding: 2rem 1rem 2.5rem;
+    @media (max-width: 767.98px) {
+        .neo-login-wrap {
+            padding: 1.25rem 0.65rem;
+            min-height: auto;
         }
 
-        .hero-copy {
-            margin-bottom: 1.3rem;
+        .matrix-panel,
+        .login-panel {
+            padding: 1.75rem 1.25rem;
         }
     }
 </style>
 
-<div class="login-page">
-    <nav class="login-navbar">
-        <div class="container py-3 d-flex justify-content-between align-items-center">
-            <a href="{{ url('/') }}" class="text-decoration-none d-flex align-items-center gap-2">
-                <span class="brand-mark">VR</span>
-                <span class="fw-bold text-white">Visitor Portal</span>
-            </a>
-            <div class="d-flex align-items-center gap-3">
-                <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill px-3 fw-semibold">Login</a>
-                <a href="{{ route('register') }}" class="text-decoration-none text-white-50">Sign Up</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="login-shell">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-copy">
-                        <p class="text-uppercase fw-semibold mb-2 small">Future-ready guest management</p>
-                        <h1 class="mb-3">Welcome back to your smart visitor hub.</h1>
-                        <p class="mb-4">Log in to continue managing check-ins, security, and visitor flow with a clean, adorable, and user-friendly dashboard.</p>
-                        <div>
-                            <span class="feature-pill">💙 Friendly workflow</span>
-                            <span class="feature-pill">⚡ Quick access</span>
-                            <span class="feature-pill">🔒 Secure sign-in</span>
-                        </div>
+<div class="container-fluid neo-login-wrap d-flex align-items-center justify-content-center">
+    <div class="col-12 col-xl-10 col-xxl-9">
+        <div class="row g-0 neo-login-shell">
+            <div class="col-md-6">
+                <div class="matrix-panel h-100 d-flex flex-column justify-content-center">
+                    <span class="hello-chip">Future Ready Access</span>
+                    <h2 class="fw-bold mb-3">Welcome Back, Explorer!</h2>
+                    <p class="mb-0">
+                        Secure, friendly, and lightning fast sign in for your visitor registration system.
+                        Your gateway to smarter check-ins starts right here.
+                    </p>
+                    <div class="matrix-rain">
+                        101110 010101 110100 001101 010101 111001 101001 010110 111001 010110<br>
+                        011010 110011 001001 101010 010110 111100 000111 110010 010011 100111<br>
+                        110101 001010 101110 010011 111000 010110 001101 100010 111001 011011
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="login-card p-4 p-md-5">
-                        <h3 class="fw-bold mb-1">Log In</h3>
-                        <p class="text-info-emphasis mb-4">Pick up where you left off.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="login-panel h-100 d-flex flex-column justify-content-center">
+                    <h3 class="cute-title">Log In</h3>
+                    <p class="cute-subtitle">Stay connected with your team and visitors in one adorable dashboard.</p>
 
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
 
-                            <div class="mb-3">
-                                <label for="email" class="form-label">{{ __('Email Address') }}</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@example.com">
-                                @error('email')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">{{ __('Email Address') }}</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="password" class="form-label">{{ __('Password') }}</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter your password">
-                                @error('password')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">{{ __('Password') }}</label>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-                            <div class="mb-4 form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="remember">{{ __('Remember Me') }}</label>
-                            </div>
+                        <div class="mb-3 form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="remember">{{ __('Remember Me') }}</label>
+                        </div>
 
-                            <button type="submit" class="login-btn w-100 mb-3">{{ __('Login') }}</button>
+                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                            <button type="submit" class="btn btn-neo">{{ __('Login') }}</button>
 
                             @if (Route::has('password.request'))
                                 <a class="forgot-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </div>
 @endsection
